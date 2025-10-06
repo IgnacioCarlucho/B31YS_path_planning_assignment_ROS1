@@ -276,48 +276,7 @@ class DijkstraPlanner:
         :return: A tuple (found, path), where 'found' is True if path is found,
                  and 'path' is the list of cells representing the path
         """
-        # Get ALL nodes (both keys and values)
-        all_nodes = set(graph.keys())
-        for neighbors in graph.values():
-            all_nodes.update(neighbors)
-        
-        # Initialize distances for ALL nodes
-        distances = {}
-        for node in all_nodes:
-            distances[node] = float('inf')
-        distances[start] = 0
-        
-        # Keep track of unvisited nodes
-        unvisited = list(all_nodes)  # Use all nodes, not just graph.keys()
-        
-        # Keep track of parents for path reconstruction
-        parent = {}
-        
-        while unvisited:
-            # Find the unvisited node with minimum distance
-            # This replaces the heap functionality
-            current_node = None
-            for node in unvisited:
-                if current_node is None or distances[node] < distances[current_node]:
-                    current_node = node
-            
-            # Remove current node from unvisited
-            unvisited.remove(current_node)
-            
-            # If we reached the goal, we're done
-            if current_node == goal:
-                return True, self.backtrace(parent, start, current_node)
-            
-            # Check all neighbors of current node
-            for neighbor in graph.get(current_node, []):
-                if neighbor in unvisited:  # Only consider unvisited neighbors
-                    # Calculate new distance through current node
-                    new_distance = distances[current_node] + 1  # Each edge has weight 1
-                    
-                    # If this path is shorter, update it
-                    if new_distance < distances[neighbor]:
-                        distances[neighbor] = new_distance
-                        parent[neighbor] = current_node
+ 
         
         # No path found
         return False, []
