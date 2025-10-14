@@ -7,7 +7,7 @@ It presents how to run an autonomous mapping and navigation demo with ROSbot and
 
 ## Installation ##
 
-We assume that you are working on Ubuntu 20.04 and already have installed ROS Kinetic. If not, follow the [ROS install guide](http://wiki.ros.org/kinetic/Installation/Ubuntu)
+We assume that you are working on Ubuntu 20.04 and already have installed ROS Noetic. If not, follow the [ROS install guide](https://wiki.ros.org/noetic/Installation/Ubuntu)
 
 Prepare the repository:
 ```bash
@@ -32,21 +32,21 @@ git clone https://github.com/IgnacioCarlucho/B31YS_path_planning_assignment_ROS1
 Install dependencies:
 
 ```bash
-cd ~/catkin_make
+cd ~/catkin_ws
 rosdep install --from-paths src --ignore-src -r -y
 ```
 
 Build the workspace:
 
 ```bash
-cd ~/ros_workspace
+cd ~/catkin_ws
 catkin_make
 ```
 
 From this moment you can use rosbot simulations. Please remember that each time, when you open new terminal window, you will need to load system variables:
 
 ```bash
-source ~/catkin_make/devel/setup.bash
+source ~/catkin_ws/devel/setup.bash
 ```
 
 If not you should add them to your bashrc. 
